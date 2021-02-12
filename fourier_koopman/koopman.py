@@ -111,7 +111,7 @@ class koopman(nn.Module):
         
         errors = []
         batch = self.parallel_batch_size
-        pi_block = torch.zeros((num_samples, len(omega)))
+        pi_block = torch.zeros((num_samples, len(omega)), device=self.device)
         pi_block[:, which] = torch.arange(0,num_samples)*np.pi*2/num_samples
         
         for i in range(int(np.ceil(xt.shape[0]/batch))):
@@ -137,7 +137,7 @@ class koopman(nn.Module):
         for t in range(1,e_fft.shape[0]+1):
             E_ft[np.arange(self.sample_num//2)*t] += e_fft[t-1,:self.sample_num//2]
             
-        E_ft = np.concatenate([E_ft, np.conj(np.flip(E_ft))])[:-1]
+        E_ft = np.concatenate([E_ft, np.conj(np.flip(E_ft, -1))])[:-1]
         E = np.real(np.fft.ifft(E_ft))
         
         if use_heuristic:
