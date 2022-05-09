@@ -3,6 +3,7 @@
 From Fourier to Koopman: Spectral methods for Long-term Forecasting
 ======
 
+Paper: [From Fourier to Koopman: Spectral Methods for Long-term Time Series Prediction (jmlr.org)](https://jmlr.org/papers/v22/20-406.html)
 
 Fourier and Koopman constitute spectral algorithms for learning linear and non-linear oscillators from data respectively.
 Both algorithms solve a global optimization problem in frequency domain and allow for modeling of systems of any dimensionality.
